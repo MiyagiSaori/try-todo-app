@@ -21,6 +21,14 @@ class TodosController < ApplicationController
 
   # POST /todos or /todos.json
   def create
+    @todo = Todo.new(todo_params)
+
+    if @todo.save
+      redirect_to @todo, notice: "タスクの作成に成功しました。"
+    else
+      flash.now[:alert] = "タスクの作成に失敗しました。"
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /todos/1 or /todos/1.json
@@ -54,6 +62,6 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.expect(todo: [ :title ])
+      params.expect(todo: [ :title, :name ])
     end
 end
