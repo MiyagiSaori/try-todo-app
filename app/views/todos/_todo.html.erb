@@ -4,4 +4,13 @@
     <%= todo.title %>
   </p>
 
+  <p>
+    <strong>Name:</strong>
+    <%= todo.name %>
+  </p>
+
+  <p>
+    <strong>Created at:</strong>
+    <%= todo.created_at.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M:%S") %>
+  </p>
 </div>
