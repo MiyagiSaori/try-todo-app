@@ -2,6 +2,12 @@
 
 <h1>New todo</h1>
 
+<% if flash[:alert] %>
+  <div style="color: red; margin-bottom: 1em;">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
 <%= render "form", todo: @todo %>
 
 <br>
